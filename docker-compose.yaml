@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  l4dc:
+    container_name: l4dc
+    build: .
+    restart: always
+    networks:
+      - l4dcnet
+networks:
+  l4dcnet:
+    name: pdmsim_simnet
