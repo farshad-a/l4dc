@@ -1,12 +1,18 @@
 version: '3.7'
 
 services:
-  l4dc:
-    container_name: l4dc
-    build: .
-    restart: always
+  gym:
+    container_name: gym-festo
+    build: gym/
     networks:
-      - l4dcnet
+      - gymnet
+  s7client:
+    container_name: s7client
+    build: s7_client/
+    networks:
+      - s7clientnet
 networks:
-  l4dcnet:
+  gymnet:
+    name: pdmsim_simnet
+  s7clientnet:
     name: pdmsim_simnet
