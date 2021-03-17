@@ -1,6 +1,8 @@
 import paho.mqtt.subscribe as subscribe
 import paho.mqtt.publish as publish
 import time
+openBrac = "{"
+closeBrac = "}"
 
 
 def on_message_print(client, userdata, message):
@@ -13,5 +15,9 @@ subscribe.callback(on_message_print, "/festo/actuation/new",
 
 if __name__ == "__main__":
     while True:
-        publish.single("/festo/actuation/new")
-        time.sleep(30)
+        for i in range(4):
+            for j in range(5):
+                for k in range(6):
+                    publish.single(
+                        "/festo/actuation", f'{openBrac}"vacuum": {i}, "screw": {j}, "vibration":{k}{closeBrac}')
+    time.sleep(30)

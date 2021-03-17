@@ -4,3 +4,5 @@ services:
   gym:
     container_name: gym-festo
     build: .
+    volumes:
+      - ./src:/code
